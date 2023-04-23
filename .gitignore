@@ -57,5 +57,6 @@ _site/
 *.replit
 *.nix
 *.o
+.ssh/
 main
 main-debug
