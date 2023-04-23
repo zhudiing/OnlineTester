@@ -1,0 +1,17 @@
+[user]
+    name = zhudiing
+    email = zhudiing@vip.qq.com
+[alias]
+	untrk = clean -ndf
+	cmt = commit -s
+	rst = reset HEAD^1
+	ss = status
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ckt = checkout
+	br = branch
+	ba = branch -a
+	bl = blame
+	save = stash save -u
+	upload = !git push $(echo "$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream})" | awk -F "/" '{print $1}') HEAD:refs/for/$(echo "$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream})" | (awk -F "/" '{if(NF==2){printf \"%s\",$2}else if(NF==3){printf \"%s/%s\",$2,$3}else if(NF==4){printf \"%s/%s/%s\",$2,$3,$4}}'))
+[color]
+	ui = auto
