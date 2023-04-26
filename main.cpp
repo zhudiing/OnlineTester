@@ -1,7 +1,15 @@
+#include "crtp/crtp.h"
+#include "headers/defer.h"
 #include "headers/logger.h"
 #include "headers/marcos.h"
 #include <iostream>
 
 constexpr auto TAG{"MAIN"};
 
-int main() { MARK("hello replit!"); }
+int main() {
+  defer { MARK("Bye!"); };
+  LOGD << "__cplusplus:" << __cplusplus  << std::endl;
+
+  Crtp::Test::what();
+  Crtp::Test::test();
+}
