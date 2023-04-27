@@ -27,11 +27,11 @@ public:
 class DerivedC : public Base<DerivedC> {};
 
 namespace Test {
-static DerivedA worker1;
-static DerivedB worker2;
-static DerivedC worker3;
 template <typename Derived> void work(Base<Derived> &b) { b.workInterface(); }
 void test() {
+  DerivedA worker1;
+  DerivedB worker2;
+  DerivedC worker3;
   work(worker1);
   work(worker2);
   work(worker3);

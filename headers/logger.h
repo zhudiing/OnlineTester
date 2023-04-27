@@ -10,6 +10,7 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <typeinfo>
 
 #define FE_0(WHAT)
 #define FE_1(WHAT, X) WHAT(X)
@@ -53,6 +54,7 @@
 #define LOGE std::cerr << "\033[95m ERROR \033[0m" << LOGGER(TAG)
 #define MARK(x) LOGD << "\033[91m" << x << "\033[0m" << std::endl;
 #define ARGS(...) LOGD << FOR_EACH(KV, __VA_ARGS__) << std::endl;
+#define TYPE(x) LOGD << KV(typeid(x).name()) << std::endl;
 #endif
 
 // from chat-gpt

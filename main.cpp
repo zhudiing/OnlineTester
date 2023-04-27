@@ -2,14 +2,11 @@
 #include "headers/defer.h"
 #include "headers/logger.h"
 #include "headers/marcos.h"
-#include <iostream>
 
 constexpr auto TAG{"MAIN"};
 
 int main() {
   defer { MARK("Bye!"); };
-  LOGD << "__cplusplus:" << __cplusplus  << std::endl;
-
-  Crtp::Test::what();
-  Crtp::Test::test();
+  LOGD << "__cplusplus:" << __cplusplus << std::endl;
+  Measure_Time { sleep_ms(1000); };
 }
