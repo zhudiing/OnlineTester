@@ -22,8 +22,8 @@ template <class F> struct measure {
     auto start = steady_clock::now();
     f();
     auto end = steady_clock::now();
-    int elapse = duration_cast<milliseconds>(end - start).count();
-    std::cout << " Measure_Time: " << elapse << " milliseconds\n";
+    int elapse = duration_cast<microseconds>(end - start).count();
+    std::cout << " Measure_Time: " << elapse << " microseconds\n";
   }
 };
 template <class F> measure<F> operator*(mt_dummy, F f) { return {f}; }
