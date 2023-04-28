@@ -1,3 +1,4 @@
+#include "c11/forward.hpp"
 #include "c11/inline_namespace.hpp"
 #include "c11/ref-qualified.hpp"
 #include "crtp/crtp.hpp"
@@ -14,6 +15,6 @@ int main() {
   LOGD << "__cplusplus:" << __cplusplus << std::endl;
   Measure_Time{};
 
-  RefQualified::Test::test();
-  RefQualified::Test::what();
+  Forward::Test::test();
+  Forward::Test::what();
 }
