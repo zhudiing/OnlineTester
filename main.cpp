@@ -15,6 +15,6 @@ int main() {
   LOGD << "__cplusplus:" << __cplusplus << std::endl;
   Measure_Time{};
 
-  Forward::Test::test();
-  Forward::Test::what();
+  RefQualified::Test::test();
+  RefQualified::Test::what();
 }
