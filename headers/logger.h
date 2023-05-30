@@ -24,9 +24,9 @@
 
 #define GET_MACRO(_0, _1, _2, _3, _4, _5, _6, _7, _8, NAME, ...) NAME
 #define FOR_EACH(action, ...)                                                  \
-  GET_MACRO(_0, __VA_ARGS__, FE_8, FE_7, FE_6, FE_5, FE_4, FE_3, FE_2, FE_1,   \
-            FE_0)                                                              \
-  (action, __VA_ARGS__)
+    GET_MACRO(_0, __VA_ARGS__, FE_8, FE_7, FE_6, FE_5, FE_4, FE_3, FE_2, FE_1, \
+              FE_0)                                                            \
+    (action, __VA_ARGS__)
 
 #ifndef KV
 #define _KV(x) #x << "=" << x << ". "
@@ -44,11 +44,11 @@
 //使用前请定义TAG eg: constexpr auto TAG{"MAIN"};
 #ifndef SHORT
 #define FORMAT(TAG)                                                            \
-  "[" << __TIME__ << "] " << TAG << "<ln:" << __LINE__ << "> ->"               \
-      << __PRETTY_FUNCTION__ << " "
+    "[" << __TIME__ << "] " << TAG << "<ln:" << __LINE__ << "> ->"             \
+        << __PRETTY_FUNCTION__ << " "
 #else
 #define FORMAT(TAG)                                                            \
-  "[" << __TIME__ << "] " << TAG << "<ln:" << __LINE__ << "> -> "
+    "[" << __TIME__ << "] " << TAG << "<ln:" << __LINE__ << "> -> "
 #endif
 #define LOGD std::cout << " DEBUG " << FORMAT(TAG)
 #define LOGE std::cerr << "\033[95m ERROR \033[0m" << FORMAT(TAG)
@@ -59,7 +59,6 @@
 
 // from chat-gpt
 #define CURRENT_TIMESTAMP                                                      \
-  std::chrono::duration_cast<std::chrono::seconds>(                            \
-      std::chrono::system_clock::now().time_since_epoch())                     \
-      .count()
-      
+    std::chrono::duration_cast<std::chrono::seconds>(                          \
+        std::chrono::system_clock::now().time_since_epoch())                   \
+        .count()

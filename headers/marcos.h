@@ -16,15 +16,15 @@
 #ifndef Measure_Time
 struct mt_dummy {};
 template <class F> struct measure {
-  F f;
-  ~measure() {
-    using namespace std::chrono;
-    auto start = steady_clock::now();
-    f();
-    auto end = steady_clock::now();
-    int elapse = duration_cast<microseconds>(end - start).count();
-    std::cout << " Measure_Time: " << elapse << " microseconds\n";
-  }
+    F f;
+    ~measure() {
+        using namespace std::chrono;
+        auto start = steady_clock::now();
+        f();
+        auto end = steady_clock::now();
+        int elapse = duration_cast<microseconds>(end - start).count();
+        std::cout << " Measure_Time: " << elapse << " microseconds\n";
+    }
 };
 template <class F> measure<F> operator*(mt_dummy, F f) { return {f}; }
 #ifdef Measure_Time_Enabled
