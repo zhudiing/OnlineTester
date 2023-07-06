@@ -1,7 +1,8 @@
 /**
- * @Date         : 2023-03-22 18:05:57
+ * @Date         : 2023-06-01 10:16:19
  * @LastEditors  : zhudi
- * @LastEditTime : 2023-03-24 19:59:23
+ * @LastEditTime : 2023-07-01 15:55:18
+ * @FilePath     : /OnlineTester/headers/logger.h
  */
 
 // 扩展到8个参数
@@ -41,13 +42,13 @@
 
 #define SHORT
 #ifndef FORMAT
-//使用前请定义TAG eg: constexpr auto TAG{"MAIN"};
+// 使用前请定义TAG eg: constexpr auto TAG{"MAIN"};
 #ifndef SHORT
-#define FORMAT(TAG)                                                            \
-    "[" << __TIME__ << "] " << TAG << "<ln:" << __LINE__ << "> ->"             \
+#define FORMAT(TAG)                                                \
+    "[" << __TIME__ << "] " << TAG << "<ln:" << __LINE__ << "> ->" \
         << __PRETTY_FUNCTION__ << " "
 #else
-#define FORMAT(TAG)                                                            \
+#define FORMAT(TAG) \
     "[" << __TIME__ << "] " << TAG << "<ln:" << __LINE__ << "> -> "
 #endif
 #define LOGD std::cout << " DEBUG " << FORMAT(TAG)
@@ -58,7 +59,7 @@
 #endif
 
 // from chat-gpt
-#define CURRENT_TIMESTAMP                                                      \
-    std::chrono::duration_cast<std::chrono::seconds>(                          \
-        std::chrono::system_clock::now().time_since_epoch())                   \
+#define CURRENT_TIMESTAMP                                    \
+    std::chrono::duration_cast<std::chrono::seconds>(        \
+        std::chrono::system_clock::now().time_since_epoch()) \
         .count()
