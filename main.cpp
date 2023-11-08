@@ -20,23 +20,26 @@
 constexpr auto TAG{"MAIN"};
 using Cb = std::function<void()>;
 
-struct obj
+struct Obj
 {
     int a;
     std::string b;
-    obj() = default;
-    obj(int a, const std::string &b) : a(a), b(b) {}
-    ~obj()
+    Obj() = default;
+    Obj(int a, const std::string &b) : a(a), b(b)
+    {
+        LOGD << "Construct:" << this << std::endl;
+    }
+    ~Obj()
     {
         LOGD << "Destruct:" << this << std::endl;
     }
-    obj(obj &&other)
+    Obj(Obj &&other)
     {
         MARK("Move construct")
         a = std::move(other.a);
         b = std::move(other.b);
     }
-    obj(const obj &other)
+    Obj(const Obj &other)
     {
         if (&other != this)
         {
@@ -49,6 +52,11 @@ struct obj
     {
         ARGS(this);
     }
+    explicit operator bool() const
+    {
+        MARK("bool")
+        return a > 0;
+    }
 };
 
 int main()
@@ -57,6 +65,6 @@ int main()
     LOGD << "__cplusplus:" << __cplusplus << std::endl;
     Measure_Time{};
 
-    RefQualified::Test::test();
-    RefQualified::Test::what();
+    Forward::Test::test();
+    Forward::Test::what();
 }
