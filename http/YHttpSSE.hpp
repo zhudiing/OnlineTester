@@ -65,11 +65,12 @@ namespace httpSSE
              * @param   {Cookies} cookies
              * @return  {cpr::Response} cpr响应体
              */
+            template <typename T>
             cpr::Response SSE(const size_t id,
                               const std::string &url,
                               const cpr::WriteCallback &wcb,
                               const cpr::Header &header = {},
-                              const cpr::Parameters &params = {},
+                              const T &params = {},
                               int timeout = HTTP_SSE_TIMEOUT,
                               const cpr::Cookies &cookies = {})
             {
