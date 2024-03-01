@@ -18,6 +18,7 @@
 #include <mutex>
 #include <string>
 #include <sys/time.h>
+#include <type_traits>
 
 #define HTTP_SSE_TIMEOUT 0    // 不限时
 #define LOG_TAG "YHttpSSE"
@@ -87,7 +88,9 @@ namespace httpSSE
                 cpr::Header h(header);
                 h.emplace("Accept", "text/event-stream");
 
-                return cpr::Download(
+                cpr::Session session;
+                cpr::priv::set_option(
+                    session,
                     wcb,
                     cpr::Url{url},
                     h,
@@ -98,6 +101,7 @@ namespace httpSSE
                     cpr::LowSpeed{5, 120},
                     cookies,
                     cpr::Ssl(cpr::ssl::VerifyPeer{false}, cpr::ssl::VerifyHost{false}, cpr::ssl::VerifyStatus{false}));
+                return std::is_same<T, cpr::Parameters>::value ? session.Get() : session.Post();
             }
 
             /**
