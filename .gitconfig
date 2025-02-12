@@ -2,7 +2,7 @@
     name = zhudiing
     email = zhudiing@vip.qq.com
 [alias]
-	untrk = clean -ndf
+	alias = config --get-regexp alias
 	cmt = commit -s
 	rst = reset HEAD^1
 	ss = status
@@ -10,8 +10,10 @@
 	ckt = checkout
 	br = branch
 	ba = branch -a
-	bl = blame
 	save = stash save -u
+	load = stash apply
+	pop = stash pop
+	saves = stash list
 	upload = !git push $(echo "$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream})" | awk -F "/" '{print $1}') HEAD:refs/for/$(echo "$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream})" | (awk -F "/" '{if(NF==2){printf \"%s\",$2}else if(NF==3){printf \"%s/%s\",$2,$3}else if(NF==4){printf \"%s/%s/%s\",$2,$3,$4}}'))
 [color]
 	ui = auto
